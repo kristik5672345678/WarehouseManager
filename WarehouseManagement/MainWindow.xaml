@@ -1,0 +1,36 @@
+﻿<Window x:Class="WarehouseManagement.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WarehouseManagement"
+        mc:Ignorable="d"
+        Title="Управление складским хозяйством" Height="600" Width="1024" WindowStartupLocation="CenterScreen">
+    <Window.CommandBindings>
+        <CommandBinding Command="local:WindowCommands.Exit" Executed="Exit_Executed" />
+        <CommandBinding Command="local:WindowCommands.AddIncomingInvoice" Executed="AddIncomingInvoice_Executed" />
+        <CommandBinding Command="local:WindowCommands.AddOutgoingInvoice" Executed="AddOutgoingInvoice_Executed" />
+    </Window.CommandBindings>
+    <DockPanel>
+        <Menu DockPanel.Dock="Top" Background="#7FFF00">
+            <MenuItem Header="Файл">
+                <MenuItem Header="Bыxoд" Command="local:WindowCommands.Exit" />
+            </MenuItem>
+            <MenuItem Header="Нaкладные">
+                <MenuItem Header="Создать входящую накладную" Command="local:WindowCommands.AddIncomingInvoice" />
+                <MenuItem Header="Создать исходящую накладную" Command="local:WindowCommands.AddOutgoingInvoice" />
+            </MenuItem>
+        </Menu>
+        
+        <!--Панель пользвоателя-->
+        <StatusBar DockPanel.Dock="Bottom" Background="#F0F0F0">
+            <TextBlock x:Name="tbStatus" FontFamily="Verdana"
+                FontSize="14" HorizontalAlignment="Right" Margin="10"
+                FontWeight="Bold"/>
+        </StatusBar>
+
+        <!-- Контент -->
+        <Frame DockPanel.Dock="Right" x:Name="MainFrame" NavigationUIVisibility="Hidden" Background="White" />
+
+    </DockPanel>
+</Window>
